@@ -26,9 +26,4 @@ public class ContainerCounterVisual : MonoBehaviour
         animator.SetTrigger(OPEN_CLOSE);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
