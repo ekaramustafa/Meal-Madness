@@ -34,7 +34,7 @@ public class GameInput : MonoBehaviour
     // Start is called before the first frame update
     public Vector2 GetMovementVectorNormalized()
     {
-        Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>(); ;
+        Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>(); 
         //diagonal movement
         inputVector = inputVector.normalized;
 

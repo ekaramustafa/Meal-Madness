@@ -66,6 +66,7 @@ public class KitchenObject : MonoBehaviour
         Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
         KitchenObject kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
         kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
+        kitchenObject.gameObject.SetActive(true);
         return kitchenObject;
     }
 

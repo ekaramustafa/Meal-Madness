@@ -57,10 +57,12 @@ public class CuttingCounter : BaseCounter, IHasProgress
             else
             {
                 //Hide the UI bar after player picks up the KitchenObject on the counter
+                
                 OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                 {
                     progressNormalized = 0f
                 }) ;
+                
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
         }
@@ -87,10 +89,10 @@ public class CuttingCounter : BaseCounter, IHasProgress
             {
 
                 KitchenObjectSO outputKitchenSO = GetOutputForInput(GetKitchenObject().GetKitchenObjectSO());
-
                 //if the KitchenObject has a cutting recipe
                 GetKitchenObject().DestroySelf();
                 KitchenObject.SpawnKitchenObject(outputKitchenSO, this);
+               
             }
 
         }
