@@ -8,8 +8,15 @@ public class DeliveryManager : MonoBehaviour
     //Singleton Pattern
     public static DeliveryManager Instance { get; private set; }
 
-    public event EventHandler OnRecipeSpawned;
-    public event EventHandler OnRecipeCompleted;
+    public event EventHandler<OnRecipeArgs> OnRecipeSpawned;
+    public event EventHandler<OnRecipeArgs> OnRecipeCompleted;
+
+    //
+    public class OnRecipeArgs : EventArgs
+    {
+        public RecipeSO recipeSO;
+    }
+
 
     [SerializeField] private RecipeListSO recipeListSO;
     List<RecipeSO> waitingRecipeSOList;
@@ -36,7 +43,10 @@ public class DeliveryManager : MonoBehaviour
                 RecipeSO waitingRecipeSO = recipeListSO.recipeSOList[UnityEngine.Random.Range(0, recipeListSO.recipeSOList.Count)];
                 waitingRecipeSOList.Add(waitingRecipeSO);
 
-                OnRecipeSpawned?.Invoke(this, EventArgs.Empty);
+                OnRecipeSpawned?.Invoke(this, new OnRecipeArgs
+                {
+                    recipeSO = waitingRecipeSO
+                });
 
             }
         }
@@ -79,10 +89,13 @@ public class DeliveryManager : MonoBehaviour
                 if (plateContentsMatchesRecipe)
                 {
                     //Player delivered the correct recipe!
+                    OnRecipeCompleted?.Invoke(this, new OnRecipeArgs
+                    {
+                        recipeSO = waitingRecipeSOList[i]
+                    });
+
                     waitingRecipeSOList.RemoveAt(i);
 
-
-                    OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
                     return;
                 }
 
