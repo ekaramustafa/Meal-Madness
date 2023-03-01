@@ -19,4 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4e8ee1ee4a1209241a7385415fa4a653, type: 2}
   - {fileID: 11400000, guid: 516b87c2ea150ae469e322f4d9264b8b, type: 2}
   recipeName: MegaBurger
-  maxOrderTime: 20
+  maxOrderTime: 30

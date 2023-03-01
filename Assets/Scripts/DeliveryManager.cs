@@ -11,6 +11,9 @@ public class DeliveryManager : MonoBehaviour
     public event EventHandler<OnRecipeArgs> OnRecipeSpawned;
     public event EventHandler<OnRecipeArgs> OnRecipeCompleted;
 
+    public event EventHandler OnRecipeSuccess;
+    public event EventHandler OnRecipeFailed;
+
     //
     public class OnRecipeArgs : EventArgs
     {
@@ -93,6 +96,7 @@ public class DeliveryManager : MonoBehaviour
                     {
                         recipeSO = waitingRecipeSOList[i]
                     });
+                    OnRecipeSuccess?.Invoke(this, EventArgs.Empty);
 
                     waitingRecipeSOList.RemoveAt(i);
 
@@ -102,6 +106,8 @@ public class DeliveryManager : MonoBehaviour
             }
             
             }
+        
+        OnRecipeFailed?.Invoke(this, EventArgs.Empty);
 
         //No matches found
         //Player did the wrong recipe

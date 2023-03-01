@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 444b4597703e8d34aa8e7a2fc6885ef6, type: 2}
   - {fileID: 11400000, guid: bd216092e2fd00246a1f215ba57fe265, type: 2}
   recipeName: Burger
-  maxOrderTime: 10
+  maxOrderTime: 20

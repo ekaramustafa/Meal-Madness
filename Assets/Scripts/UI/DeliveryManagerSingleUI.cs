@@ -17,7 +17,6 @@ public class DeliveryManagerSingleUI : MonoBehaviour, IHasProgress
 
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
 
-    public event EventHandler<OnOrderTimeFinishedArgs> OnOrderTimeFinished;
 
     public class OnOrderTimeFinishedArgs : EventArgs
     {
@@ -37,12 +36,12 @@ public class DeliveryManagerSingleUI : MonoBehaviour, IHasProgress
             progressNormalized = orderTimer / recipeSO.maxOrderTime
         });
 
-        if(orderTimer > recipeSO.maxOrderTime)
-        {
-            //Can add another mechanics later.
-            Debug.Log("BROOOO The time is up");
-            //Destroy(gameObject);
-        }
+        //if(orderTimer > recipeSO.maxOrderTime)
+        //{
+        //    //Can add another mechanics later.
+        //    Debug.Log("BROOOO The time is up");
+        //    Destroy(gameObject);
+        //}
         
     }
 

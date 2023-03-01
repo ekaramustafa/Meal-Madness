@@ -18,7 +18,7 @@ public class DeliveryManagerUI : MonoBehaviour
     {
         DeliveryManager.Instance.OnRecipeSpawned += DeliveryManager_OnRecipeSpawned;
         DeliveryManager.Instance.OnRecipeCompleted += DeliveryManager_OnRecipeCompleted;
-        //UpdateVisual();
+        
 
     }
 
@@ -30,6 +30,7 @@ public class DeliveryManagerUI : MonoBehaviour
             if (child.GetComponent<DeliveryManagerSingleUI>().GetRecipeSO() == e.recipeSO && child != recipeTemplate)
             {
                 Destroy(child.gameObject);
+                return;
             }
         }
         
@@ -42,39 +43,6 @@ public class DeliveryManagerUI : MonoBehaviour
         recipeTransform.gameObject.SetActive(true);
         recipeTransform.GetComponent<DeliveryManagerSingleUI>().SetRecipeSO(e.recipeSO);
     }
-
-
-
-    //private void DeliveryManager_OnRecipeSpawned(object sender, System.EventArgs e)
-    //{
-    //    UpdateVisual();
-
-    //}
-
-    //private void DeliveryManager_OnRecipeCompleted(object sender, System.EventArgs e)
-    //{
-
-    //    UpdateVisual();
-    //}
-
-
-
-    //private void UpdateVisual()
-    //{
-    //    foreach(Transform child in container)
-    //    {
-    //        if (child != recipeTemplate)
-    //        {
-    //            Destroy(child.gameObject);
-    //        }
-    //    }
-
-    //    foreach(RecipeSO recipeSO in DeliveryManager.Instance.GetWaitingRecipeSOList()){
-    //        Transform recipeTransform = Instantiate(recipeTemplate, container);
-    //        recipeTransform.gameObject.SetActive(true);
-    //        recipeTransform.GetComponent<DeliveryManagerSingleUI>().SetRecipeSO(recipeSO);
-    //    }
-
 
     }
 
