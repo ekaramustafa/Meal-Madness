@@ -53,18 +53,23 @@ public class PlatesCounter : BaseCounter
         {
             if (platesSpawnedAmount > 0)
             {
-                PlateKitchenObject plateKitchenObject = KitchenObject.SpawnKitchenObject(plateKitchenObjectS0, this) as PlateKitchenObject;
-                if (plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO()))
+                KitchenObject.SpawnKitchenObject(plateKitchenObjectS0, this);
+                if (GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
                 {
-                    player.GetKitchenObject().DestroySelf();                 
-                    plateKitchenObject.SetKitchenObjectParent(player);
-                    OnPlateRemoved?.Invoke(this, EventArgs.Empty);
-                    platesSpawnedAmount--;
+                    //There is a plate on the counter
+                    if (plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO()))
+                    {
+                        
+                        player.GetKitchenObject().DestroySelf();
+                        plateKitchenObject.SetKitchenObjectParent(player);
+                        OnPlateRemoved?.Invoke(this, EventArgs.Empty);
+                        platesSpawnedAmount--;
 
+                    }
                 }
                 else
                 {
-                    plateKitchenObject.DestroySelf();
+                    GetKitchenObject().DestroySelf();
                     
                 }
             }   
