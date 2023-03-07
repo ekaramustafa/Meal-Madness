@@ -1085,7 +1085,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.40027365, y: -0.000000007244687, z: 0.000000003164414, w: 0.91639566}
+  m_LocalRotation: {x: 0.40027368, y: 0.000000047855103, z: -0.000000020902693, w: 0.91639566}
   m_LocalPosition: {x: 0, y: 21.85, z: -20.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2590,7 +2590,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907984213}
-  m_LocalRotation: {x: 0.40027365, y: -0.000000007244687, z: 0.000000003164414, w: 0.91639566}
+  m_LocalRotation: {x: 0.40027368, y: 0.000000047855103, z: -0.000000020902693, w: 0.91639566}
   m_LocalPosition: {x: 0, y: 21.85, z: -20.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2896,6 +2896,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 507876850}
     m_Modifications:
+    - target: {fileID: 5670600243653193021, guid: dc6033d0b72580740aa55cbab46eec8c,
+        type: 3}
+      propertyPath: validKitchenObjectSOList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670600243653193021, guid: dc6033d0b72580740aa55cbab46eec8c,
+        type: 3}
+      propertyPath: validKitchenObjectSOList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 516b87c2ea150ae469e322f4d9264b8b,
+        type: 2}
     - target: {fileID: 6850072179245359884, guid: dc6033d0b72580740aa55cbab46eec8c,
         type: 3}
       propertyPath: m_Name

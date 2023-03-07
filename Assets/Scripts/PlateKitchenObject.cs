@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,12 +37,11 @@ public class PlateKitchenObject : KitchenObject
         }
         else { 
             kitchenObjectSOList.Add(kitchenObjectSO);
-            
             OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs
             {
                 kitchenObjectSO = kitchenObjectSO
             });
-
+            
             return true;
         }
     }

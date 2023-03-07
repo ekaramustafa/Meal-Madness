@@ -11,6 +11,10 @@ public class PlatesCounter : BaseCounter
 
     [SerializeField] KitchenObjectSO plateKitchenObjectS0;
     [SerializeField] private float spawnPlateTimerMax = 4f;
+
+
+    [SerializeField] List<KitchenObjectSO> validKitchenObjectSOList;
+    
     private float spawnPlateTimer = 0f;
 
     private int platesSpawnedAmount;
@@ -44,6 +48,27 @@ public class PlatesCounter : BaseCounter
 
                 OnPlateRemoved?.Invoke(this,EventArgs.Empty);
             }
+        }
+        else
+        {
+            if (platesSpawnedAmount > 0)
+            {
+                PlateKitchenObject plateKitchenObject = KitchenObject.SpawnKitchenObject(plateKitchenObjectS0, this) as PlateKitchenObject;
+                if (plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO()))
+                {
+                    player.GetKitchenObject().DestroySelf();                 
+                    plateKitchenObject.SetKitchenObjectParent(player);
+                    OnPlateRemoved?.Invoke(this, EventArgs.Empty);
+                    platesSpawnedAmount--;
+
+                }
+                else
+                {
+                    plateKitchenObject.DestroySelf();
+                    
+                }
+            }   
+            //Check whether player carries a object that can be placed onto plate
         }
     }
 

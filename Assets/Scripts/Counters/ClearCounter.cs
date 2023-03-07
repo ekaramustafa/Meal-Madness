@@ -38,8 +38,10 @@ public class ClearCounter : BaseCounter
                 else
                 {
                     //Player is not carrying Plate but something else
+               
                     if(GetKitchenObject().TryGetPlate(out plateKitchenObject))
                     {
+                       //There is a plate on the counter
                         if (plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO()))
                         {
                             player.GetKitchenObject().DestroySelf();

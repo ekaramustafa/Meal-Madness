@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     }
     private State state;
 
-    private float waitingToStartTimer = 1f;
+    private float waitingToStartTimer = 0.2f;
     private float countdownToStartTimer = 3f;
     private float gamePlayingTimer = 10f;
 
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case State.GamePlaying:
-                gamePlayingTimer -= Time.deltaTime;
+                //gamePlayingTimer -= Time.deltaTime;
                 if(gamePlayingTimer < 0f)
                 {
                     state = State.GameOver;
