@@ -6,6 +6,16 @@ public class KitchenObject : MonoBehaviour
 {
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
 
+    private float fryingTimer;
+    private float burningTimer;
+    private int cuttingProgress;
+
+    private void Awake()
+    {
+        fryingTimer = 0f;
+        burningTimer = 0f;
+        cuttingProgress = 0;
+    }
 
     private IKitchenObjectParent kitchenObjectParent;
     public KitchenObjectSO GetKitchenObjectSO()
@@ -68,6 +78,35 @@ public class KitchenObject : MonoBehaviour
         kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
         kitchenObject.gameObject.SetActive(true);
         return kitchenObject;
+    }
+
+    public float GetFryingTimer()
+    {
+        return fryingTimer;
+    }
+    public float GetBurningTimer()
+    {
+        return burningTimer;
+    }
+
+    public void SetFryingTimer(float fryingTimer)
+    {
+        this.fryingTimer = fryingTimer;
+    }
+
+    public void SetBurningTimer(float burningTimer)
+    {
+        this.burningTimer = fryingTimer;
+    }
+
+    public int GetCuttingProgress()
+    {
+        return cuttingProgress;
+    }
+
+    public void SetCuttingProgress(int cuttingProgress)
+    {
+        this.cuttingProgress = cuttingProgress;
     }
 
 
