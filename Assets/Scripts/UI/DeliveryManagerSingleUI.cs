@@ -30,6 +30,9 @@ public class DeliveryManagerSingleUI : MonoBehaviour, IHasProgress
 
     private void Update()
     {
+        //If the game is not playing then do not update the rest
+        if (!GameManager.Instance.IsGamePlaying()) return;
+        
         orderTimer += Time.deltaTime;
         OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
         {

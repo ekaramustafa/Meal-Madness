@@ -25,6 +25,11 @@ public class PlateKitchenObject : KitchenObject
         kitchenObjectSOList = new List<KitchenObjectSO>();
     }
 
+    private void Start()
+    {
+        
+    }
+
     public bool TryAddIngredient(KitchenObjectSO kitchenObjectSO)
     {
         if (!validKitchenObjectSOs.Contains(kitchenObjectSO))
@@ -35,7 +40,7 @@ public class PlateKitchenObject : KitchenObject
         {
             return false;
         }
-        else { 
+        else {
             kitchenObjectSOList.Add(kitchenObjectSO);
             OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs
             {

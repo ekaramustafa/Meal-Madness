@@ -25,8 +25,9 @@ public class DeliveryManager : MonoBehaviour
     List<RecipeSO> waitingRecipeSOList;
 
     [SerializeField] private float spawnRecipeTimerMax = 4f;
+    [SerializeField] private int waitingRecipesMax = 4;
     private float spawnRecipeTimer;
-    private int waitingRecipesMax = 4;
+    
 
     private void Awake()
     {
