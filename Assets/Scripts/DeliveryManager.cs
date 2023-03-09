@@ -14,7 +14,8 @@ public class DeliveryManager : MonoBehaviour
     public event EventHandler OnRecipeSuccess;
     public event EventHandler OnRecipeFailed;
 
-    //
+    private int successfulRecipesCount;
+
     public class OnRecipeArgs : EventArgs
     {
         public RecipeSO recipeSO;
@@ -100,6 +101,7 @@ public class DeliveryManager : MonoBehaviour
                     OnRecipeSuccess?.Invoke(this, EventArgs.Empty);
 
                     waitingRecipeSOList.RemoveAt(i);
+                    successfulRecipesCount++;
 
                     return;
                 }
@@ -118,6 +120,11 @@ public class DeliveryManager : MonoBehaviour
     public List<RecipeSO> GetWaitingRecipeSOList()
     {
         return waitingRecipeSOList;
+    }
+
+    public int GetSuccessfulRecipesCount()
+    {
+        return successfulRecipesCount;
     }
 
 }

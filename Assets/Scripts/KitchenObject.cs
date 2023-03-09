@@ -96,7 +96,7 @@ public class KitchenObject : MonoBehaviour
 
     public void SetBurningTimer(float burningTimer)
     {
-        this.burningTimer = fryingTimer;
+        this.burningTimer = burningTimer;
     }
 
     public int GetCuttingProgress()
