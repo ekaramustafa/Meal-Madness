@@ -51,12 +51,11 @@ public class PlatesCounter : BaseCounter
         }
         else
         {
-
             //TO-DO
             if (platesSpawnedAmount > 0)
             {
                 KitchenObject.SpawnKitchenObject(plateKitchenObjectS0,this);
-                if (GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
+                if (GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject) && !player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject2))
                 {
                     //There is a plate on the counter
                     if (plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO()))
