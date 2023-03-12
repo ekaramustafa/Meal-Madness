@@ -8,6 +8,12 @@ public class TrashCounter : BaseCounter
 
 
     public static event EventHandler OnAnyObjectTrashed;
+
+    new public static void ResetStaticData()
+    {
+        OnAnyObjectTrashed = null;
+    }
+
     // Start is called before the first frame update
     public override void Interact(Player player)
     {
