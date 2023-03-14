@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    private const string PLAYER_PREFX_SOUND_EFFECTS_VOLUME = "SoundEffectsVolume";
 
     public static SoundManager Instance { get; private set; }
 
@@ -14,6 +15,8 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        volume = PlayerPrefs.GetFloat(PLAYER_PREFX_SOUND_EFFECTS_VOLUME, 1f);
     }
 
     private void Start()
@@ -27,7 +30,7 @@ public class SoundManager : MonoBehaviour
         
         Player.Instance.OnPickSomething += Player_OnPickSomething;
         Player.Instance.GetComponent<PlayerSounds>().OnPlayerFootSteps += SoundManager_OnPlayerFootSteps;
-
+        
     }
 
 
@@ -85,11 +88,17 @@ public class SoundManager : MonoBehaviour
         {
             volume = 0f;
         }
+
+        //to save the volume variable
+        PlayerPrefs.SetFloat(PLAYER_PREFX_SOUND_EFFECTS_VOLUME,volume);
+        PlayerPrefs.Save();
     }
 
     public float GetVolume()
     {
         return volume;
     }
+
+    
 
 }
