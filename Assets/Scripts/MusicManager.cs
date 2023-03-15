@@ -21,10 +21,26 @@ public class MusicManager : MonoBehaviour
         auidoSource.volume = volume;
 
     }
-    public void ChangeVolume()
+
+    public void TurnUpVolume()
     {
         volume += .1f;
-        if (volume > 1f)
+        if(volume > 1f)
+        {
+            volume = 1f;
+        }
+
+        auidoSource.volume = volume;
+
+        PlayerPrefs.SetFloat(PLAYER_PREFS_MUSIC_VOLUME, volume);
+        PlayerPrefs.Save();
+
+    }
+
+    public void TurnDownVolume()
+    {
+        volume -= .1f;
+        if (volume < 0f)
         {
             volume = 0f;
         }
@@ -33,6 +49,7 @@ public class MusicManager : MonoBehaviour
 
         PlayerPrefs.SetFloat(PLAYER_PREFS_MUSIC_VOLUME, volume);
         PlayerPrefs.Save();
+
     }
 
     public float GetVolume()

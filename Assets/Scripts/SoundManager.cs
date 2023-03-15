@@ -81,17 +81,31 @@ public class SoundManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(audioClipArray[Random.Range(0, audioClipArray.Length)], position, volumeMultiplier * volume);
     }
 
-    public void ChangeVolume()
+    public void TurnUpVolume()
     {
         volume += .1f;
         if (volume > 1f)
         {
+            volume = 1f;
+        }
+
+
+        PlayerPrefs.SetFloat(PLAYER_PREFX_SOUND_EFFECTS_VOLUME, volume);
+        PlayerPrefs.Save();
+
+    }
+
+    public void TurnDownVolume()
+    {
+        volume -= .1f;
+        if (volume < 0f)
+        {
             volume = 0f;
         }
 
-        //to save the volume variable
-        PlayerPrefs.SetFloat(PLAYER_PREFX_SOUND_EFFECTS_VOLUME,volume);
+        PlayerPrefs.SetFloat(PLAYER_PREFX_SOUND_EFFECTS_VOLUME, volume);
         PlayerPrefs.Save();
+
     }
 
     public float GetVolume()
