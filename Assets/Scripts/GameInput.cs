@@ -13,7 +13,16 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnInteractAlternateAction;
     public event EventHandler OnPauseAction;
     
-
+    public enum Binding
+    {
+        MoveUp,
+        MoveDown,
+        MoveLeft,
+        MoveRight,
+        Interact,
+        InteractAlternate,
+        Pause
+    }
 
     private PlayerInputActions playerInputActions;
     private void Awake()
@@ -63,4 +72,41 @@ public class GameInput : MonoBehaviour
 
         return inputVector;
     }
+
+
+    public string GetBindingText(Binding binding)
+    {
+        switch (binding)
+        {
+            default:
+            
+            case Binding.Interact:
+                return playerInputActions.Player.Interact.bindings[0].ToDisplayString();
+            
+            case Binding.InteractAlternate:
+                return playerInputActions.Player.InteractAlternate.bindings[0].ToDisplayString();
+            
+            case Binding.Pause:
+                return playerInputActions.Player.Pause.bindings[0].ToDisplayString();
+
+            case Binding.MoveUp:
+                return playerInputActions.Player.Move.bindings[1].ToDisplayString();
+            
+            case Binding.MoveDown:
+                return playerInputActions.Player.Move.bindings[2].ToDisplayString();
+            
+            case Binding.MoveLeft:
+                return playerInputActions.Player.Move.bindings[3].ToDisplayString();
+            
+            case Binding.MoveRight:
+                return playerInputActions.Player.Move.bindings[4].ToDisplayString();
+
+
+
+
+        }
+    }
+
+
+
 }
