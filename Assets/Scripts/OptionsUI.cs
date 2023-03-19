@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,6 +27,8 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] private Button interactAlternateButton;
     [SerializeField] private Button pauseButton;
 
+    [SerializeField] private Transform pressToRebindKeyTransform;
+
 
     private void Awake()
     {
@@ -36,6 +39,22 @@ public class OptionsUI : MonoBehaviour
             Hide();
         });
 
+        moveUpButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.MoveUp); });
+
+        moveDownButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.MoveDown); });
+        
+        moveLeftButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.MoveLeft); });
+
+        moveRightButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.MoveRight); });
+
+        interactButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Interact); });
+
+        interactAlternateButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.InteractAlternate); });
+
+        pauseButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Pause); });
+
+
+
     }
 
     private void Start()
@@ -43,6 +62,7 @@ public class OptionsUI : MonoBehaviour
         GameManager.Instance.OnGamePaused += GameManager_OnGamePaused;
         Hide();
         UpdateVisual();
+        HidePressToRebindKey();
     }
 
     private void GameManager_OnGamePaused(object sender, System.EventArgs e)
@@ -73,4 +93,26 @@ public class OptionsUI : MonoBehaviour
         pauseText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Pause);
 
     }
+
+    private void ShowPressToRebindKey()
+    {
+        pressToRebindKeyTransform.gameObject.SetActive(true);
+    }
+    private void HidePressToRebindKey()
+    {
+        pressToRebindKeyTransform.gameObject.SetActive(false);
+    }
+
+
+    private void RebindBinding(GameInput.Binding binding)
+    {
+        ShowPressToRebindKey();
+        GameInput.Instance.RebindBinding(binding,() =>
+        {
+            HidePressToRebindKey();
+            UpdateVisual();
+        });
+    }
+
+
 }
