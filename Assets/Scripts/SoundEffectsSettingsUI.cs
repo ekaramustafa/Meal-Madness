@@ -42,4 +42,6 @@ public class SoundEffectsSettingsUI : MonoBehaviour
     {
         soundEffectsText.text = "Sound Effects : " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
     }
+
+   
 }

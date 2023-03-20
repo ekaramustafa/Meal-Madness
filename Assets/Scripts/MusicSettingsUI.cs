@@ -39,4 +39,9 @@ public class MusicSettingsUI : MonoBehaviour
     {
         musicText.text = "Music : " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
     }
+
+    public Button getMusicButton()
+    {
+        return musicButton;
+    }
 }
