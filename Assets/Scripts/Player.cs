@@ -21,7 +21,6 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     [SerializeField] private LayerMask countersLayerMask;
     [SerializeField] private Transform kitchenObjectHoldPoint;
 
-
     private bool isWalking;
     private Vector3 lastInteractDir;
     private BaseCounter selectedCounter;
@@ -34,6 +33,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
             Debug.LogError("There is more than one Player, cannot use Singleton Pattern");
         }
         Instance = this;
+       
     }
     private void Start()
     {
@@ -151,7 +151,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
                 //Check only Z movement
                 Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized;
 
-                canMove = ( moveDir.z < -.5f || moveDir.z > .5f) && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight,
+                canMove = ( moveDir.z < -.5f || moveDir.z > +.5f) && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight,
                                                playerRadius, moveDirZ, moveDistance);
 
                 if (canMove)

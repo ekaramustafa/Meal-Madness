@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     private bool isGamePaused = false;
     [SerializeField]private float gamePlayingTimerMax = 50f;
 
+
+
     private void Awake()
     {
         Instance = this;

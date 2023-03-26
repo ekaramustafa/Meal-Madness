@@ -8,6 +8,7 @@ public class RecipeSO : ScriptableObject
     public List<KitchenObjectSO> kitchenObjectSOList;
     public string recipeName;
     public float maxOrderTime;
+    public int recipePoints;
 
 
 }

@@ -70,6 +70,12 @@ public class SoundManager : MonoBehaviour
         PlaySound(audioClipRefsSO.deliveryFail,deliveryCounter.transform.position, 1f);
     }
 
+    public void PlayRecipeTimeOver()
+    {
+        DeliveryCounter deliveryCounter = DeliveryCounter.Instance;
+        PlaySound(audioClipRefsSO.deliveryFail, deliveryCounter.transform.position, 1f);
+    }
+
     private void DeliveryManager_OnRecipeSuccess(object sender, System.EventArgs e)
     {
         DeliveryCounter deliveryCounter = DeliveryCounter.Instance;

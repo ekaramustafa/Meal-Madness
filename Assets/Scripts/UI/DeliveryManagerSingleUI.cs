@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class DeliveryManagerSingleUI : MonoBehaviour, IHasProgress
+public class DeliveryManagerSingleUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI recipeNameText;
     [SerializeField] private Transform iconContainter;
@@ -13,39 +13,9 @@ public class DeliveryManagerSingleUI : MonoBehaviour, IHasProgress
 
     private RecipeSO recipeSO;
 
-    private float orderTimer = 0f;
-
-    public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
-
-
-    public class OnOrderTimeFinishedArgs : EventArgs
-    {
-        public GameObject gameObject;
-    }
-
     private void Awake()
     {
         iconTemplate.gameObject.SetActive(false);
-    }
-
-    private void Update()
-    {
-        //If the game is not playing then do not update the rest
-        if (!GameManager.Instance.IsGamePlaying()) return;
-        
-        orderTimer += Time.deltaTime;
-        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
-        {
-            progressNormalized = orderTimer / recipeSO.maxOrderTime
-        });
-
-        //if(orderTimer > recipeSO.maxOrderTime)
-        //{
-        //    //Can add another mechanics later.
-        //    Debug.Log("BROOOO The time is up");
-        //    Destroy(gameObject);
-        //}
-        
     }
 
     public void SetRecipeSO(RecipeSO recipeSO)
