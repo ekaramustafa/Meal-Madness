@@ -8,7 +8,7 @@ public class GamePointsUI : MonoBehaviour
 {
     public static GamePointsUI Instance { get; private set; }
     [SerializeField] private TextMeshProUGUI pointsText;
-    int points = 0;
+    private int points = 0;
 
     private void Awake()
     {
@@ -45,5 +45,10 @@ public class GamePointsUI : MonoBehaviour
     private void UpdateVisual()
     {
         pointsText.text = points.ToString();
+    }
+
+    public int GetPoints()
+    {
+        return points;
     }
 }

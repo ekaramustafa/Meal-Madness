@@ -28,6 +28,7 @@ public class DeliveryManagerSingle : MonoBehaviour, IHasProgress
 
         if (orderTimer > recipeSO.maxOrderTime)
         {
+            DeliveryManager.Instance.GetWaitingRecipeSOList().Remove(recipeSO);
             GamePointsUI.Instance.DecremenPoints(recipeSO.recipePoints);
             Destroy(transform.gameObject);
         }

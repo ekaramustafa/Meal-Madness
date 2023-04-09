@@ -20,7 +20,7 @@ public class GameOverUI : MonoBehaviour
         if (GameManager.Instance.IsGameOver())
         {
             Show();
-            recipesDeliveredText.text = DeliveryManager.Instance.GetSuccessfulRecipesCount().ToString();
+            recipesDeliveredText.text = GamePointsUI.Instance.GetPoints().ToString();
         }
         else
         {
